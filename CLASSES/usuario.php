@@ -37,6 +37,20 @@
                 return true;
             }
         }
+
+        Public function buscarDados()
+        {
+            $res = array();
+            global $pdo;
+
+            $sql = $pdo->prepare("SELECT * FROM usuario ORDER BY nome");
+            $sql->execute();
+            // O prepare precisa do execute e o query não.
+            
+            $res = $sql->fetchAll(PDO::FETCH_ASSOC);
+
+            return $res;
+        }
     }
 
 ?>
