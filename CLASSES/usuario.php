@@ -51,6 +51,40 @@
 
             return $res;
         }
+        public function excluirUsuario($id_usuario)
+        {
+            global $pdo;
+            $sql = $pdo->prepare("DELETE FROM usuario WHERE id_usuario = :id");
+            $sql->bindValue(":id", $id_usuario);
+            $sql->execute();
+        }
+
+        public function buscarDadosUsuario($id_usuario)
+        {
+            
+            $dadosUsuario = array();
+
+            global $pdo;
+
+            $sql = $pdo->prepare("SELECT * FROM usuario WHERE id_usuario = :id");
+            $sql->bindValue(":id", $id_usuario);
+            $sql->execute();
+            
+            $dadosUsuario = $sql->fetch(PDO::FETCH_ASSOC);
+
+            return $dadosUsuario;
+        }
+
+        public function atualizarDadosUsuario($id_usuario, $nome, $email, $telefone)
+        {
+            global $pdo;
+            $sql = $pdo->prepare("UPDATE usuario SET nome = :n, email = :e, telefone = :t WHERE id_usuario = :id");
+            $sql->bindValue(":n", $nome);
+            $sql->bindValue(":e", $email);
+            $sql->bindValue(":t", $telefone);
+            $sql->bindValue(":id", $id_usuario);
+            $sql->execute();
+        }
     }
 
 ?>

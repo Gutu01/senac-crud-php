@@ -47,8 +47,8 @@
                     <?php echo $pessoa['telefone'] ?>
                 </td>
                 <td>
-                    <a href="">Editar</a>
-                    <a href="">Excluir</a>
+                    <a href="editar.php?id_usuario=<?php echo $pessoa ['id_usuario']; ?>">Editar</a>
+                    <a href="excluir.php?id_usuario=<?php echo $pessoa ['id_usuario']; ?>">Excluir</a>
                 </td>
             </tr>
         </tbody>
